@@ -1,0 +1,12 @@
+SpaTipps
++ csak a partneruserek tudnak belépni
++ profil oldal tisztítása: nem kell a profil törlése
++ regisztráció kigyomlálsa 
++ tesztek is.
++ csak aktív partner aktív userei léphetnek be
++ csak belépés után érhető el bármilyen oldal (egyelőre)
++ fordítások kezelése -> másik táblába/ból
++ nyelvváltás
++ fordatások menüpont csak sysdamin-nak érhető el (issystemadmin = 1)
++ autocomplete off
+

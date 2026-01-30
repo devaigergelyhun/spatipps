@@ -8,8 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
+use App\Models\Partner;
+
 class User extends Authenticatable
 {
+    
+    protected $table = 'partnerusers';
+    
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
 
@@ -24,6 +29,16 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function partner()
+    {
+        return $this->belongsTo(Partner::class, 'partnerid', 'id');
+    }
+    
+    public function isSystemAdmin(): bool
+    {
+        return (bool) $this->systemadmin;
+    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -36,6 +51,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function isActive(): bool
+    {
+        return $this->active && $this->partner?->active;
+    }
+    
     /**
      * Get the attributes that should be cast.
      *
